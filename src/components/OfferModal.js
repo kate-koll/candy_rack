@@ -5,17 +5,20 @@ import OfferList from "./OfferList";
 
 const OfferModal = (props) => {
 
-    const [offerIds, setOfferIds] = useState([]);
+    const [offerTitles, setOfferTitles] = useState([]);
    
     const handleSave = () => {
-        alert(`You added item: ${offerIds}, great choice!`)
+        if(offerTitles.length>0){
+          alert(`You added item: ${offerTitles}, great choice!`)
+        }
+        else alert("Nothing extra added, maybe next time.")
         props.setShow(false)
-        setOfferIds([])
+        setOfferTitles([])
     }
 
     const handleHide = () => {
         props.setShow(false)
-        setOfferIds([])
+        setOfferTitles([])
     }
 
   return (
@@ -27,7 +30,7 @@ const OfferModal = (props) => {
         </Modal.Header>
 
         <Modal.Body><p>Let's make it even better!</p>
-          <OfferList setOfferIds={setOfferIds}/>
+          <OfferList setOfferTitles={setOfferTitles}/>
         </Modal.Body>
 
         <Modal.Footer>

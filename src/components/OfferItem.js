@@ -17,9 +17,19 @@ const [added, setAdded] = useState(false)
   };
 
   const handleAddClick = (event) => {
-    props.setOfferIds(oldArray => [...oldArray, props.id])
-    console.log(props.id)
+    props.setOfferTitles(oldArray => [...oldArray, props.title])
     setAdded(true);
+  }
+  
+  const handleRemoveClick = (event) => {
+    console.log(props.title)
+    props.setOfferTitles(oldArray=> {
+      let newArray = oldArray.filter((prvek)=>prvek!==props.title)
+      console.log(newArray);
+      return newArray
+    })
+    
+    setAdded(false);
   }
 
   return (
@@ -38,7 +48,8 @@ const [added, setAdded] = useState(false)
             <p>{props.short_description}</p>
           </Col>
           <Col text-align="center">
-            <Button disabled={added} onClick = {handleAddClick}>Add</Button>
+            {!added && <Button  onClick = {handleAddClick}>Add</Button>}
+            {added && <Button variant="danger" onClick = {handleRemoveClick}>Remove</Button>}
           </Col>
         </Row>
       </Container>

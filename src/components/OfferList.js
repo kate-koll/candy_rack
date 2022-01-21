@@ -33,7 +33,6 @@ const OfferList = (props) => {
   const getOffers = () => {
     let offersArray = Object.entries(offers);
     return offersArray.map((offer) => {
-      //return <li key={offer[1].id}>{offer[1].title}</li>
       return (
         <div>
           <hr />
@@ -46,7 +45,7 @@ const OfferList = (props) => {
             discounted_price={offer[1].discounted_price}
             short_description={offer[1].short_description}
             currency="USD"
-            setOfferIds={props.setOfferIds}
+            setOfferTitles={props.setOfferTitles}
           />
           <hr />
         </div>
